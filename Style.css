@@ -1,0 +1,39 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    background-color: green; /* Ajuste conforme necessário */
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Nível 1 */
+#nivel1 {
+    background-color: green;
+}
+
+#nivel1 .frase-binaria {
+    color: green; /* Mesma cor do fundo */
+}
+
+/* Nível 2 */
+#nivel2 {
+    background-color: red;
+}
+
+#nivel2 img {
+    width: 300px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+/* Vitória */
+#vitoria {
+    background-color: purple;
+}
