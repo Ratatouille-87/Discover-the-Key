@@ -1,9 +1,13 @@
 <?php
 session_start();
-$conn = new mysqli('localhost', 'username', 'password', 'discover_the_key');
+$conn = new mysqli('localhost', 'root', '', 'discover_the_key');
 
 if ($conn->connect_error) {
-    die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    die('Connect Error (' . $conn->connect_errno . ') ' . $conn->connect_error);
+}
+
+if (!isset($_SESSION['nivel'])) {
+    $_SESSION['nivel'] = 1;
 }
 
 $resposta = $_POST['resposta'];
@@ -11,34 +15,50 @@ $nivel = $_SESSION['nivel'];
 
 if ($nivel == 1) {
     if ($resposta == 'Level 1') {
-        $_SESSION['nivel'] = 2;
-        header("Location: nivel2.php");
-    } else {
+        $_SESSION['nivel'] = 1;
         $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $nivel, $resposta, $correta);
-        $correta = 0;
+        $correta = true;
+        $stmt->execute();
+        header("Location: nivel2.php");
+    } else {
+        $_SESSION['nivel'] = 1;
+        $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
+        $stmt->bind_param("isi", $nivel, $resposta, $correta);
+        $correta = false;
         $stmt->execute();
         echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='index.php';</script>";
     }
 } elseif ($nivel == 2) {
-    if ($resposta == 'How to Solve Caesar Cipher') { // título do vídeo
+    if ($resposta == 'Esses RECORDES OLÍMPICOS nunca vão ser quebrados') {
+        $_SESSION['nivel'] = 2;
         $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $nivel, $resposta, $correta);
-        $correta = 1;
+        $correta = true;
         $stmt->execute();
         header("Location: vitoria.php");
     } else {
+        $_SESSION['nivel'] = 2;
         $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
         $stmt->bind_param("isi", $nivel, $resposta, $correta);
-        $correta = 0;
+        $correta = false;
         $stmt->execute();
-        if (strpos($resposta, 'youtube.com/watch') !== false) {
+        if (strpos($resposta, 'watch?v=SJEeo1WmcVw&t=3s') !== false) {
+            $_SESSION['nivel'] = 2;
+            $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
+            $stmt->bind_param("isi", $nivel, $resposta, $correta);
+            $correta = false;
+            $stmt->execute();
             echo "<script>alert('YT'); window.location.href='nivel2.php';</script>";
         } else {
+            $_SESSION['nivel'] = 2;
+            $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
+            $stmt->bind_param("isi", $nivel, $resposta, $correta);
+            $correta = false;
+            $stmt->execute();
             echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel2.php';</script>";
         }
     }
 }
 
 $conn->close();
-?>
