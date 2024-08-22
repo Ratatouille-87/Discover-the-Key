@@ -105,15 +105,15 @@
     <!-- Conteúdo centralizado -->
     <div class="content">
         <h1>ycvej?x=ULGgq1YoeXy</h1>
-        <img src="https://aventurasnahistoria.com.br/media/uploads/1c442ae541.jpg" alt="Imperador César">
         <form method="POST" action="verificar.php">
+            <input type="hidden" name="nivel" value="2">
             <input type="text" name="resposta" placeholder="Digite a resposta">
             <button type="submit" name="submit">Confirmar</button>
         </form>
         <?php
         if (isset($_POST['submit'])) {
-            $resposta = $_POST['resposta'];
-            if (strtolower($resposta) === 'esses recordes olímpicos nunca vão ser quebrados') {
+            $resposta = strtolower(trim($_POST['resposta']));
+            if ($resposta === 'Esses RECORDES OLÍMPICOS nunca vão ser quebrados') {
                 header("Location: vitoria.php");
                 exit();
             } else {
@@ -121,6 +121,7 @@
             }
         }
         ?>
+        <img src="https://aventurasnahistoria.com.br/media/uploads/1c442ae541.jpg" alt="Imperador César">
     </div>
 </body>
 </html>
