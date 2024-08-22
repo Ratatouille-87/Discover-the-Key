@@ -96,7 +96,8 @@
         }
     </style>
 </head>
-<body>
+<body id="vitoria">
+    <input type="hidden" name="nivel" value="0">
     <!-- Contêiner para estrelas -->
     <div class="stars">
         <?php for ($i = 0; $i < 100; $i++): ?>
