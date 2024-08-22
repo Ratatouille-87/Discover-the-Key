@@ -56,7 +56,7 @@
         <?php endfor; ?>
     </style>
 </head>
-<body>
+<body id="nivel1">
     <!-- Contêiner para estrelas -->
     <div class="stars">
         <?php for ($i = 0; $i < 100; $i++): ?>
@@ -67,13 +67,14 @@
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
         <h1>Level 1</h1>
         <form method="POST" action="verificar.php">
-            <input type="text" name="resposta" placeholder="Digite a resposta" style="padding: 10px; border-radius: 5px; border: none;">
-            <button type="submit" name="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">Confirmar</button>
+        <input type="hidden" name="nivel" value="1">
+            <input type="text" name="resposta" placeholder="Digite a resposta">
+            <button type="submit" name="submit">Confirmar</button>
         </form>
         <?php
         if (isset($_POST['submit'])) {
             $resposta = $_POST['resposta'];
-            if (strtolower($resposta) === 'level 1') {
+            if (strtolower($resposta) === 'Level 1') {
                 header("Location: nivel2.php");
                 exit();
             } else {
