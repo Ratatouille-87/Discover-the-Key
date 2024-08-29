@@ -27,7 +27,10 @@ class GameController extends BaseController
     {
         return view('verificar');
     }
+    
 }
+
+
 
 
 
