@@ -99,7 +99,7 @@
         <?php endfor; ?>
     </div>
 
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
+    <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
         <h1>Level 1</h1>
         <form method="POST" action="">
             <input type="hidden" name="nivel" value="1">
