@@ -62,26 +62,32 @@
             font-size: 24px;
         }
 
-                .content input[type="text"] {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            width: 80%;
-            max-width: 300px;
-            margin-bottom: 10px;
+        /* Estilo para a mensagem de erro */
+        .erro {
+            color: aliceblue;
+            font-weight: bold;
         }
 
-        .content button {
+        /* Estilo para o campo de resposta e botão de confirmação */
+        input[type="text"], .confirmar {
             padding: 10px 20px;
-            background-color: green;
+            margin: 5px 0;
+            box-sizing: border-box;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .confirmar {
+            background-color: #28a745; /* Verde */
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .content p {
-            margin-top: 10px;
+        .confirmar:hover {
+            background-color: #218838; /* Verde mais escuro ao passar o mouse */
         }
     </style>
 </head>
@@ -95,19 +101,19 @@
 
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
         <h1>Level 1</h1>
-        <form method="POST" action="verificar">
+        <form method="POST" action="">
             <input type="hidden" name="nivel" value="1">
             <input type="text" name="resposta" placeholder="Digite a resposta">
-            <button type="submit" name="submit">Confirmar</button>
+            <button type="submit" name="submit" class="confirmar">Confirmar</button>
         </form>
         <?php
         if (isset($_POST['submit'])) {
             $resposta = $_POST['resposta'];
-            if (strtolower($resposta) === 'Level 1') {
-                header("Location: nivel2.php");
-                exit();
+            if (strtolower($resposta) === 'level 1') {
+                // Redirecionar para a página do nível 2
+                echo "<script>window.location.href = 'nivel2';</script>";
             } else {
-                echo "<p>Boa ideia, mas a resposta não é essa, tente novamente</p>";
+                echo "<p class='erro'>Boa ideia, mas a resposta não é essa, tente novamente</p>";
             }
         }
         ?>
@@ -115,3 +121,4 @@
     </div>
 </body>
 </html>
+
