@@ -108,10 +108,10 @@
         </form>
         <?php
         if (isset($_POST['submit'])) {
-            $resposta = $_POST['resposta'];
-            if (strtolower($resposta) === 'Level 1') {
-                // Redirecionar para a página do nível 2
-                echo "<script>window.location.href = 'nivel2';</script>";
+            $resposta = strtolower(trim($_POST['resposta']));
+            if ($resposta === 'Level 1') {
+                header("Location: nivel2");
+                exit();
             } else {
                 echo "<p class='erro'>Boa ideia, mas a resposta não é essa, tente novamente</p>";
             }
