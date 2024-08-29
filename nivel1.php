@@ -104,12 +104,12 @@
         <form method="POST" action="">
             <input type="hidden" name="nivel" value="1">
             <input type="text" name="resposta" placeholder="Digite a resposta">
-            <button type="submit" name="submit" class="confirmar">Confirmar</button>
+            <button type="submit" name="submit">Confirmar</button>
         </form>
         <?php
         if (isset($_POST['submit'])) {
             $resposta = $_POST['resposta'];
-            if (strtolower($resposta) === 'level 1') {
+            if (strtolower($resposta) === 'Level 1') {
                 // Redirecionar para a página do nível 2
                 echo "<script>window.location.href = 'nivel2';</script>";
             } else {
