@@ -51,7 +51,7 @@ if ($nivel == 1 && $resposta === strtolower('Level 1')) {
     if ($nivel == 1) {
         echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel1';</script>";
     } elseif ($nivel == 2) {
-        echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel2.php';</script>";
+        echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel2';</script>";
     }
     exit();
 }
