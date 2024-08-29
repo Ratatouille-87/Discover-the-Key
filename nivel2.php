@@ -82,7 +82,7 @@
 
         .content button {
             padding: 10px 20px;
-            background-color: #28a745;
+            background-color: red;
             color: white;
             border: none;
             border-radius: 5px;
