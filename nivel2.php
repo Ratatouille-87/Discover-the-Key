@@ -113,7 +113,7 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resposta = strtolower(trim($_POST['resposta']));
-            if ($resposta === 'esses recordes olímpicos nunca vão ser quebrados') {
+            if ($resposta === 'Esses RECORDES OLÍMPICOS nunca vão ser quebrados') {
                 header("Location: vitoria");
                 exit();
             } else {
