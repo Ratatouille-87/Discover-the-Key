@@ -105,16 +105,16 @@
     <!-- Conteúdo centralizado -->
     <div class="content">
         <h1>ycvej?x=ULGgq1YoeXy</h1>
-        <form method="POST" action="verificar.php">
+        <form method="POST" action="">
             <input type="hidden" name="nivel" value="2">
             <input type="text" name="resposta" placeholder="Digite a resposta">
             <button type="submit" name="submit">Confirmar</button>
         </form>
         <?php
-        if (isset($_POST['submit'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resposta = strtolower(trim($_POST['resposta']));
-            if ($resposta === 'Esses RECORDES OLÍMPICOS nunca vão ser quebrados') {
-                header("Location: vitoria.php");
+            if ($resposta === 'esses recordes olímpicos nunca vão ser quebrados') {
+                header("Location: vitoria");
                 exit();
             } else {
                 echo "<p>Boa ideia, mas a resposta não é essa, tente novamente</p>";
