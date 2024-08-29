@@ -61,6 +61,28 @@
             text-shadow: 0 0 5px rgba(0, 0, 0, 1);
             font-size: 24px;
         }
+
+                .content input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+
+        .content button {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .content p {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body id="nivel1">
