@@ -20,29 +20,38 @@ if ($nivel == 1 && $resposta === strtolower('Level 1')) {
     $correta = true;
     $_SESSION['nivel'] = 2;
     $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $nivel, $resposta, $correta);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+    $stmt->bind_param("iss", $nivel, $resposta, $correta);
     $stmt->execute();
-    header("Location: nivel2.php");
+    header("Location: nivel2");
     exit();
 } elseif ($nivel == 2 && $resposta === strtolower('Esses RECORDES OLÍMPICOS nunca vão ser quebrados')) {
     $correta = true;
     $_SESSION['nivel'] = 0;
     $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $nivel, $resposta, $correta);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+    $stmt->bind_param("iss", $nivel, $resposta, $correta);
     $stmt->execute();
-    header("Location: vitoria.php");
+    header("Location: vitoria");
     exit();
 } else {
     // Registro de tentativa incorreta
     $stmt = $conn->prepare("INSERT INTO tentativas (nivel, resposta, correta) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $nivel, $resposta, $correta);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+    $stmt->bind_param("iss", $nivel, $resposta, $correta);
     $stmt->execute();
 
     // Redirecionamento com mensagem de erro
     if ($nivel == 1) {
-        header("Location: index.php?erro=1");
+        echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel1';</script>";
     } elseif ($nivel == 2) {
-        header("Location: nivel2.php?erro=1");
+        echo "<script>alert('Boa ideia, mas a resposta não é essa, tente novamente'); window.location.href='nivel2.php';</script>";
     }
     exit();
 }
