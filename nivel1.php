@@ -99,19 +99,19 @@
         <?php endfor; ?>
     </div>
 
-    <div class="content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2;">
         <h1>Level 1</h1>
         <form method="POST" action="">
             <input type="hidden" name="nivel" value="1">
             <input type="text" name="resposta" placeholder="Digite a resposta">
-            <button type="submit" name="submit">Confirmar</button>
+            <button type="submit" name="submit" class="confirmar">Confirmar</button>
         </form>
         <?php
         if (isset($_POST['submit'])) {
-            $resposta = strtolower(trim($_POST['resposta']));
-            if ($resposta === 'Level 1') {
-                header("Location: nivel2");
-                exit();
+            $resposta = $_POST['resposta'];
+            if (strtolower($resposta) === 'level 1') {
+                // Redirecionar para a página do nível 2
+                echo "<script>window.location.href = 'nivel2';</script>";
             } else {
                 echo "<p class='erro'>Boa ideia, mas a resposta não é essa, tente novamente</p>";
             }
