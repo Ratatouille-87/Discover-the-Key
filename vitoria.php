@@ -96,8 +96,7 @@
         }
     </style>
 </head>
-<body id="vitoria">
-    <input type="hidden" name="nivel" value="0">
+<body>
     <!-- Contêiner para estrelas -->
     <div class="stars">
         <?php for ($i = 0; $i < 100; $i++): ?>
@@ -106,9 +105,10 @@
     </div>
 
     <!-- Conteúdo centralizado -->
-    <div class="content">
-        <h1>Parabéns, Você Venceu!</h1>
-        <p>Seu esforço e dedicação te trouxeram até aqui. Aproveite sua vitória!</p>
+<body id="vitoria">
+<input type="hidden" name="nivel" value="0">
+    <div>
+        <h1>Parabéns! Você venceu o jogo!</h1>
     </div>
 </body>
 </html>
